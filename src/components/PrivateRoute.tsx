@@ -6,7 +6,7 @@ import { Navigate, Outlet } from "react-router";
 
 const PrivateRoute = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { isAuthenticated, } = useSelector(
+  const { isAuthenticated,isLoading } = useSelector(
     (state: { auth: { isAuthenticated: boolean; isLoading: boolean } }) => state.auth
   );
 
@@ -19,7 +19,7 @@ const PrivateRoute = () => {
     }
   }, [dispatch, isAuthenticated]);
 
-  // if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <div>Loading...</div>;
 
   return isAuthenticated ? <Outlet /> : <Navigate to="/login" replace />;
 };

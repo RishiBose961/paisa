@@ -1,6 +1,7 @@
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import DebitCreate from "../Debit/DebitCreate"
 import CreditCreate from "../Credit/CreditCreate"
+import ReportPage from "../Report/ReportPage"
 
 export function HomePage() {
 
@@ -29,7 +30,9 @@ export function HomePage() {
       <TabsContent value="credit">
         <CreditCreate/>
       </TabsContent>
-      <TabsContent value="reports">Reports Content</TabsContent>
+      <TabsContent value="reports">
+        <ReportPage/>
+      </TabsContent>
     </Tabs>
   )
 }

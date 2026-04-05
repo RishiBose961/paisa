@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useMutation } from "@tanstack/react-query"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 import axios from "axios"
 
 import { Button } from "@/components/ui/button"
@@ -18,6 +18,7 @@ import CheckEnvironment from "@/CheckEnvironment/CheckEnvironment"
 
 const DebitCreate = () => {
     const { base_url } = CheckEnvironment();
+     const queryClient = useQueryClient();
     const { user } = useSelector(
         (state: {
             auth: {
@@ -49,7 +50,8 @@ const DebitCreate = () => {
             return res.data
         },
         onSuccess: () => {
-            alert("Debit created successfully ✅")
+            alert("Debit created successfully ✅")            
+            queryClient.invalidateQueries({ queryKey: ["debits"] })
             setFormData({
                 amount: "",
                 date: "",

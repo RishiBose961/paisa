@@ -10,12 +10,13 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-import { useMutation } from "@tanstack/react-query"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 import axios from "axios"
 import { useState } from "react"
 import { useSelector } from "react-redux"
 const CreditCreate = () => {
     const { base_url } = CheckEnvironment();
+   const queryClient = useQueryClient();
     const { user } = useSelector(
         (state: {
             auth: {
@@ -47,6 +48,7 @@ const CreditCreate = () => {
             return res.data
         },
         onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ["credits"] })
             alert("Credit created successfully ✅")
             setFormData({
                 amount: "",
