@@ -23,8 +23,8 @@ const getColor = (index: number, total: number) => {
 const { base_url } = CheckEnvironment();
 
 
-const fetchDebitData = async (token: string) => {
-  const res = await fetch(`${base_url}/api/debits/sum-by-month`, {
+const fetchCreditData = async (token: string) => {
+  const res = await fetch(`${base_url}/api/credits/sum-by-month`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -42,8 +42,8 @@ export default function AnalyticsPage() {
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["debit-month"],
-    queryFn: () => fetchDebitData(user?.token),
+    queryKey: ["credit-month"],
+    queryFn: () => fetchCreditData(user?.token),
     enabled: !!user?.token,
   })
 
@@ -60,7 +60,7 @@ export default function AnalyticsPage() {
   return (
     <Card className="flex flex-col w-full max-w-3xl mx-auto">
       <CardHeader className="items-center pb-0">
-        <CardTitle>Monthly Debit Analytics</CardTitle>
+        <CardTitle>Monthly Credit Analytics</CardTitle>
         <CardDescription>Pie Chart + Table View</CardDescription>
       </CardHeader>
 
@@ -113,7 +113,7 @@ export default function AnalyticsPage() {
           Monthly spending insights <TrendingUp className="h-4 w-4" />
         </div>
         <div className="text-muted-foreground">
-          Based on your debit transactions
+          Based on your credit transactions
         </div>
       </CardFooter>
     </Card>

@@ -19,8 +19,12 @@ const ReportPage = () => {
             <div className="flex  gap-5">
 
 
-             <Link to="/analytics">
+             <Link to="/analytics-debit">
                     <Button>Analytics Debit</Button>
+                </Link>
+
+                <Link to="/analytics-credit">
+                    <Button>Analytics Credit</Button>
                 </Link>
                  
             </div>

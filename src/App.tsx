@@ -8,6 +8,7 @@ import RegisterPage from "./pages/Auth/RegisterPage"
 import GetCredit from "./pages/Credit/GetCredit"
 import GetDebit from "./pages/Debit/GetDebit"
 import AnalyticsPage from "./pages/Analytics/AnalyticsPage"
+import AnalyticCredit from "./pages/Analytics/AnalyticCredit"
 
 const App = () => {
   const { user } = useSelector(
@@ -34,7 +35,8 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/credit" element={<GetCredit />} />
           <Route path="/debit" element={<GetDebit />} />
-          <Route path="/analytics" element={<AnalyticsPage />} />
+          <Route path="/analytics-debit" element={<AnalyticsPage />} />
+          <Route path="/analytics-credit" element={<AnalyticCredit />} />
 
         </Route>
         <Route path="*" element={<div>Page Not Found</div>} />
